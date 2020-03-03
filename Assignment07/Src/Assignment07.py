@@ -27,17 +27,25 @@ def draw_random_ellipse(draw):
                                   default_color_blue + random.randrange(-100,100,1), 255), 
                                   outline = "black")
 
-def generate_captcha():
+def generate_captcha(char_count, image_name):
     '''
     Generate a captcha
     :return: A tuple (image, captcha string encoded in the image)
     '''
-    captcha_string = generate_random_string(5)
+    
+    if char_count >= 6 and char_count <= 10:
+        captcha_string = generate_random_string(char_count)
+    else:
+        print("You've entered a char_count outside of the range. Your new char_count will be random betwen 6 and 10")
+        captcha_string = generate_random_string(random.randrange(6,10))
+        
 #   print(">" + captcha_string + "<")
     captcha_image = Image.new("RGBA", (400, 200), (default_color_red,default_color_green,default_color_blue))
     draw = ImageDraw.Draw(captcha_image, "RGBA")
     for i in range(1,20):
         draw_random_ellipse(draw)
+    
+    
 
     fontStyle = ImageFont.truetype("Aaargh.ttf", 48)     # font must be in the same folder as the .py file. 
 
