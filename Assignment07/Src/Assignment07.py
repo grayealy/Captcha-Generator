@@ -45,7 +45,7 @@ def generate_captcha(char_count, file_location):
     draw = ImageDraw.Draw(captcha_image, "RGBA")
     for i in range(1,20):
         draw_random_ellipse(draw)
-    captcha_image.save( file_location ) 
+    #captcha_image.save( file_location ) 
     
 
     fontStyle = ImageFont.truetype("Aaargh.ttf", 48)     # font must be in the same folder as the .py file. 
@@ -60,5 +60,7 @@ def generate_captcha(char_count, file_location):
         y = y +  random.randrange(-10, 10, 1)
     
     
+    new_captcha = (captcha_image, captcha_string)
+    new_captcha[0].save( file_location) #saves the generated captcha out to 'CaptchaImages' folder in my Src folder. Each time the function is callled, it will save the newly generated captcha. 
     
-    return (captcha_image, captcha_string)  # return a heterogeneous tuple
+    return (new_captcha)  # return a heterogeneous tuple

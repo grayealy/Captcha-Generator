@@ -6,7 +6,7 @@ Created on Feb 26, 2020
 
 from Assignment07 import generate_captcha
 
-result = generate_captcha(7,"C:\\Users\\graye\\git\\Captcha-Generator\\Assignment07\\Src\\CaptchaImages\\captcha.png")
+result = generate_captcha(7,"C:\\Users\\graye\\git\\Captcha-Generator\\Assignment07\\Src\\CaptchaImages\\captcha.png") #have to add double back slashes because the character assignment for "\" is a return.
 print(result[0])
 myCaptcha = result[0]
 captcha_string = result[1]
