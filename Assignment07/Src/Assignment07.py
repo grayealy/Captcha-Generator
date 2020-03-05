@@ -1,7 +1,10 @@
 '''
-Created on Feb 26, 2020
-
-@author: nicomp
+Name: Gray Ealy
+Email: ealygg@mail.uc.edu
+Assignment: Assignment07
+Course: IS 4010
+Semester/Year: Spring 2020
+Brief Description: This project demonstrates the use of image manipulation and truetype fonts fun
 '''
 import random
 from PIL import Image, ImageFilter, ImageDraw, ImageFont
@@ -36,7 +39,7 @@ def generate_captcha(char_count, file_location):
     if char_count >= 6 and char_count <= 10:
         captcha_string = generate_random_string(char_count)
     else:
-        print("You've entered a char_count outside of the range. Your new char_count will be random betwen 6 and 10")
+        print("You've entered a char_count outside of the range. Your new char_count will be random between 6 and 10")
         captcha_string = generate_random_string(random.randrange(6,10))
     
 #   print(">" + captcha_string + "<")
@@ -48,14 +51,16 @@ def generate_captcha(char_count, file_location):
     #captcha_image.save( file_location ) 
     
 
-    fontStyle = ImageFont.truetype("Aaargh.ttf", 48)     # font must be in the same folder as the .py file. 
+    styles = [ImageFont.truetype("SAEROWS DEMO.ttf", 48), ImageFont.truetype("SURVIVOR demo.ttf", 48), ImageFont.truetype("Aaargh.ttf", 48)]
+    #fontStyle = ImageFont.truetype("Aaargh.ttf", 48)     # font must be in the same folder as the .py file. 
 
+    styleChoice = random.randrange(0,2)
     # Arbitrary starting co-ordinates for the text we will write
     x = 10 + random.randrange(0, 100, 1)
     y = 79 + random.randrange(-10, 10, 1)
     for letter in captcha_string:
 #       print(letter)
-        draw.text((x, y), letter, (0,0,0),font=fontStyle)    # Write in black
+        draw.text((x, y), letter, (0,0,0),font=styles[styleChoice])    # Write in black
         x = x + 35
         y = y +  random.randrange(-10, 10, 1)
     
